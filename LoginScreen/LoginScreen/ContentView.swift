@@ -29,8 +29,12 @@ struct ContentView: View {
                             .font(.title3)
                             .fontWeight(.bold)
                             .foregroundColor(.secondary)
-                        TextField("", text: $edEmail)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        HStack {
+                            TextField("", text: $edEmail)
+                                .frame(height: 50)
+                        }
+                        .border(Color.black, width: 3)
+                        .cornerRadius(10)
                     }.padding(.top)
          
                     VStack(alignment: .leading) {
@@ -46,9 +50,21 @@ struct ContentView: View {
                                 Text("Recuperar senha")
                             }
                         }
-                        SecureField("", text: $edPassword)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                        
+                        HStack {
+                            SecureField("", text: $edPassword)
+                                .font(.headline)
+                                .frame(height: 50)
+                            Spacer()
+                            Button(action: {
+                                
+                            }) {
+                                Image(systemName: "eye")
+                                    .foregroundColor(.secondary)
+                            }
+                            Spacer()
+                        }
+                        .border(Color.black, width: 3)
+                        .cornerRadius(10)
                     }.padding(.top)
                     Toggle(isOn: $isOn) {
                         Text("Lembrar minha senha")
